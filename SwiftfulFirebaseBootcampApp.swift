@@ -11,6 +11,7 @@ import Firebase
 @main
 struct SwiftfulFirebaseBootcampApp: App {
 
+  // without AppDelegate
   init() {
     FirebaseApp.configure()
     print("configured firebase")
@@ -18,7 +19,19 @@ struct SwiftfulFirebaseBootcampApp: App {
 
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      NavigationView {
+        AuthenticationView(showSignInView: .constant(true))
+      }
     }
   }
 }
+
+/*
+// with AppDelegate
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+    return true
+  }
+}
+ */
